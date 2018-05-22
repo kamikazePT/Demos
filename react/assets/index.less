@@ -1,0 +1,43 @@
+@full-width: 100%;
+@color-button-width : 250px;
+@color-button-height : 80px;
+
+@shuffle-button-width : 200px;
+@shuffle-button-height : 80px;
+@margin-large: 20px;
+
+.row(){
+  width: @full-width;
+  &::after{
+    display: table;
+    content: ' ';
+  }
+}
+
+.color-chooser-page-container{
+  .color-panel-container{
+    height: (@color-button-height * 4);
+  }
+
+  .color-button-list-container{
+    .row();
+    .color-button-container{
+      position: relative;
+      width: (@full-width / 4);
+
+      .btn.btn-color{
+        width : @color-button-width;
+        height: @color-button-height;
+      }
+    }
+  }
+
+  .shuffle-button-container{
+    margin-top: @margin-large;
+
+    .btn.btn-shuffle{
+      width : @shuffle-button-width;
+      height: @shuffle-button-height;
+    }
+  }
+}

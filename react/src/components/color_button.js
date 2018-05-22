@@ -12,7 +12,7 @@ class ColorButton extends Component{
 
     return(
       <div className={containerClasses}>
-        <button className="btn btn-color" style={{ 'background-color' : color.value }} onClick={onClick} type="button">{color.label}</button>
+        <button className="btn btn-color" style={{ backgroundColor : color.value }} onClick={onClick} type="button">{color.label}</button>
       </div>
     );
   }

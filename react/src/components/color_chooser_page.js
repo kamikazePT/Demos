@@ -23,7 +23,7 @@ class ColorChooserPage extends Component{
   renderButtonList(){
     const { colors, isShuffling } = this.props;
 
-    if(colors.length > 0){
+    if(!isShuffling && colors.length > 0){
       const colorButtonListClasses = classNames('color-button-list-container', {'is-shuffling' : isShuffling});
 
       return (
@@ -35,9 +35,9 @@ class ColorChooserPage extends Component{
   }
 
   renderShuffleButton(){
-    const { isFetching, colors, isShuffling } = this.props;
+    const { colors } = this.props;
 
-    if(!isFetching && colors.length > 0 && !isShuffling){
+    if(colors.length > 0){
       return (
         <div className="shuffle-button-container">
           <button className="btn btn-shuffle" onClick={this.props.shuffleColors} type="button">Shuffle All</button>
@@ -63,8 +63,10 @@ class ColorChooserPage extends Component{
     const pageStyles = selectedColor ? { backgroundColor : selectedColor } : {};
 
     return(
-      <div className="color-chooser-page-container" style={pageStyles}>
-        {this.renderFetchingMessage() || this.renderShufflingMessage() || this.renderButtonList()}
+      <div className="color-chooser-page-container">
+        <div className="color-panel-container" style={pageStyles}>
+          {this.renderFetchingMessage() || this.renderShufflingMessage() || this.renderButtonList()}
+        </div>
         {this.renderShuffleButton()}
       </div>
     );

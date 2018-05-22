@@ -49,6 +49,8 @@ class ColorChooserPageContainer extends Component{
 
 
   _shuffleColors = () => {
+    if(this.isShuffling) return;
+
     this.setState({
       isShuffling : true,
       selectedColor : null
