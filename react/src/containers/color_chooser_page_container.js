@@ -15,6 +15,8 @@ class ColorChooserPageContainer extends Component{
   }
 
   addColorGroup = () => {
+    if(this.state.isShuffling) return;
+
     const colors = [...this.state.colors];
     colors.push({
       items: []
@@ -25,6 +27,8 @@ class ColorChooserPageContainer extends Component{
   }
 
   deleteColorGroup = (i) => {
+    if(this.state.isShuffling) return;
+    
     const colors = [...this.state.colors];
     colors.splice(i, 1);
     this.setState({
