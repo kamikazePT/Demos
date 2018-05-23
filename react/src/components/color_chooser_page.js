@@ -1,47 +1,31 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ColorButtonList from './color_button_list';
+import ColorButtonListGroup from './color_button_list_group';
 import classNames from 'classnames';
 
 class ColorChooserPage extends Component{
-  componentDidMount(){
-    this.props.fetchColors();
-  }
 
-  renderFetchingMessage(){
-    const { isFetching } = this.props;
+  renderButtonListGroup(){
+    const { isShuffling } = this.props;
 
-    if(isFetching){
-      return (
-        <div className="alert-info-container">
-          <span className="alert-info">Fetching</span>
-        </div>
-      );
-    }
-  }
+    const colorButtonListClasses = classNames('color-button-list-container', {'is-shuffling' : isShuffling});
 
-  renderButtonList(){
-    const { colors, isShuffling } = this.props;
-
-    if(!isShuffling && colors.length > 0){
-      const colorButtonListClasses = classNames('color-button-list-container', {'is-shuffling' : isShuffling});
-
-      return (
-        <div className={colorButtonListClasses}>
-          <ColorButtonList {...this.props}/>
-        </div>
-      );
-    }
+    return (
+      <div className={colorButtonListClasses}>
+        <ColorButtonListGroup {...this.props}/>
+      </div>
+    );
   }
 
   renderShuffleButton(){
-    const { isShuffling } = this.props;
+    const { isShuffling, colors } = this.props;
 
-    const shuffleButtonListClasses = classNames('shuffle-button-container', {'is-shuffling' : isShuffling});
+    const shuffleButtonListClasses = classNames('shuffle-button-container', 
+      {'is-shuffling' : isShuffling}, {'is-locked' : colors.length === 0});
 
     return (
       <div className={shuffleButtonListClasses}>
-        <button className="btn btn-shuffle" onClick={this.props.shuffleColors} type="button" disabled={isShuffling}>Shuffle All</button>
+        <button className="btn btn-shuffle" onClick={this.props.shuffleColors} type="button" disabled={isShuffling || colors.length === 0}>Shuffle All</button>
       </div>
     );
   }
@@ -59,13 +43,12 @@ class ColorChooserPage extends Component{
   }
 
   render(){
-    const { selectedColor } = this.props;
-    const pageStyles = selectedColor ? { backgroundColor : selectedColor } : {};
 
     return(
       <div className="color-chooser-page-container">
-        <div className="color-panel-container" style={pageStyles}>
-          {this.renderFetchingMessage() || this.renderShufflingMessage() || this.renderButtonList()}
+        <div className="color-panel-container" >
+          {this.renderShufflingMessage()}
+          {this.renderButtonListGroup()}
         </div>
         {this.renderShuffleButton()}
       </div>
@@ -75,15 +58,11 @@ class ColorChooserPage extends Component{
 
 ColorChooserPage.defaultProps = {
   colors : [],
-  isFetching : false,
   isShuffling : false,
 };
 
 ColorChooserPage.propTypes = {
-  selectedColor : PropTypes.string,
   colors : PropTypes.array.isRequired,
-  isFetching : PropTypes.bool.isRequired,
-  fetchColors : PropTypes.func.isRequired,
   shuffleColors : PropTypes.func.isRequired,
   isShuffling : PropTypes.bool.isRequired
 };

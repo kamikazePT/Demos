@@ -9,24 +9,41 @@ class ColorChooserPageContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      selectedColor : null,
       colors : [],
-      isFetching : false,
       isShuffling : false
     };
   }
 
-  /**
-   * Simulating an http request to fetch colors
-   */
-  _fetchColors = () => {
+  addColorGroup = () => {
+    const colors = [...this.state.colors];
+    colors.push({
+      items: []
+    });
     this.setState({
-      isFetching : true
+      colors : colors
+    });
+  }
+
+  deleteColorGroup = (i) => {
+    const colors = [...this.state.colors];
+    colors.splice(i, 1);
+    this.setState({
+      colors : colors
+    });
+  }
+ 
+  fetchColors = (i) => {
+    const newColorList = {...this.state.colors[i]};
+    newColorList.isFetching = true;
+    const colors = [...this.state.colors];
+    colors[i] = newColorList;
+    this.setState({
+      colors : colors
     }, () => 
       setTimeout(() => {
-        this.setState({
-          isFetching : false,
-          colors : [
+        const newColors = [...this.state.colors];
+        newColors[i] = {
+          items :[
             {
               value : '#FF0000',
               label : 'Red'
@@ -43,43 +60,60 @@ class ColorChooserPageContainer extends Component{
               value : '#FFFF00',
               label : 'Yellow'
             }
-          ]
+          ],
+          isFetching : false
+        };
+        this.setState({
+          colors : newColors
         });
       }, ONE_SECOND)
     );
   }
 
 
-  _shuffleColors = () => {
+  shuffleColors = () => {
     const { isShuffling, colors } = this.state;
-    if(isShuffling || colors.length === 0) return;
+    if(isShuffling) return;
+
+    const newColors = [...colors].map(color => { color.selectedColor = null; return color; });
 
     this.setState({
       isShuffling : true,
-      selectedColor : null
+      colors : newColors
     }, () => 
       setTimeout(() => {
+        const newColors = [...this.state.colors].map(color => 
+        {
+          color.items = shuffle(color.items);
+          color.selectedColor = color.items[Math.floor(Math.random() * color.items.length)].value; 
+          return color;
+        });
+
         this.setState({
           isShuffling : false,
-          colors : shuffle([...this.state.colors]),
-          selectedColor : this.state.colors[Math.floor(Math.random() * this.state.colors.length)].value
+          colors : newColors
         });
       }, HALF_SECOND)
     );
   }
 
-  _doSelectColor = (color) => {
+  doSelectColor = (i, selectedColor) => {
+    const newColors = [...this.state.colors];
+    newColors[i].selectedColor = newColors[i].selectedColor !== selectedColor ? selectedColor : null;
+
     this.setState({
-      selectedColor : this.state.selectedColor === color ? null : color
+      colors : newColors
     });
   }
 
   render(){
     return(
       <ColorChooserPage {...this.state} 
-        doSelectColor={this._doSelectColor} 
-        shuffleColors={this._shuffleColors} 
-        fetchColors={this._fetchColors}
+        deleteColorGroup={this.deleteColorGroup}
+        addColorGroup={this.addColorGroup}
+        doSelectColor={this.doSelectColor} 
+        shuffleColors={this.shuffleColors} 
+        fetchColors={this.fetchColors}
       />
     );
   }

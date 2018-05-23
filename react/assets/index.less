@@ -4,6 +4,9 @@
 
 @shuffle-button-width : 200px;
 @shuffle-button-height : 80px;
+
+@mutable-button-size : 60px;
+
 @margin-large: 20px;
 @shadow-highlight: 15px;
 @none : 0px;
@@ -17,7 +20,20 @@
 }
 
 .color-chooser-page-container{
-  .color-panel-container{
+  .btn.btn-add{
+    background-color: green;
+  }
+
+  .btn.btn-add, .btn.btn-remove{
+    cursor: pointer;
+    width: @mutable-button-size;
+    height: @mutable-button-size;
+  }
+  .btn.btn-remove{
+    background-color: red;
+  }
+
+  .color-button-list-group-container{
     height: (@color-button-height * 4);
   }
 
@@ -42,6 +58,12 @@
     }
   }
 
+  .color-button-list-container.is-shuffling{
+    .color-button-list-group-container{
+      opacity: 0;
+    }
+  }
+
   .shuffle-button-container{
     margin-top: @margin-large;
 
@@ -53,9 +75,8 @@
     }
   }
 
-  .shuffle-button-container.is-shuffling{
+  .shuffle-button-container.is-shuffling, .shuffle-button-container.is-locked{
     .btn.btn-shuffle{
-      background-color: grey;
       cursor: not-allowed;
     }
   }
