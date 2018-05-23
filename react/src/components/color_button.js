@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class ColorButton extends Component{
-  render(){
-    const { color, onClick, isSelected } = this.props;
+function ColorButton(props){
+  const { color, onClick, isSelected } = props;
 
-    const containerClasses = classNames('color-button-container', {
-      'is-selected' : isSelected
-    });
+  const containerClasses = classNames('color-button-container', {
+    'is-selected' : isSelected
+  });
 
-    return(
-      <div className={containerClasses}>
-        <button className="btn btn-color" style={{ backgroundColor : color.value }} onClick={onClick} type="button">{color.label}</button>
-      </div>
-    );
-  }
+  return(
+    <div className={containerClasses}>
+      <button className="btn btn-color" style={{ backgroundColor : color.value }} onClick={onClick} type="button">{color.label}</button>
+    </div>
+  );
 }
 
 ColorButton.propTypes = {

@@ -26,6 +26,7 @@
       width: (@full-width / 4);
 
       .btn.btn-color{
+        cursor: pointer;
         width : @color-button-width;
         height: @color-button-height;
       }
@@ -36,8 +37,17 @@
     margin-top: @margin-large;
 
     .btn.btn-shuffle{
+      background-color: lightgrey;
+      cursor: pointer;
       width : @shuffle-button-width;
       height: @shuffle-button-height;
+    }
+  }
+
+  .shuffle-button-container.is-shuffling{
+    .btn.btn-shuffle{
+      background-color: grey;
+      cursor: not-allowed;
     }
   }
 }

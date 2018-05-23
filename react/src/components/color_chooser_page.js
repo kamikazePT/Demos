@@ -35,15 +35,15 @@ class ColorChooserPage extends Component{
   }
 
   renderShuffleButton(){
-    const { colors } = this.props;
+    const { isShuffling } = this.props;
 
-    if(colors.length > 0){
-      return (
-        <div className="shuffle-button-container">
-          <button className="btn btn-shuffle" onClick={this.props.shuffleColors} type="button">Shuffle All</button>
-        </div>
-      );
-    }
+    const shuffleButtonListClasses = classNames('shuffle-button-container', {'is-shuffling' : isShuffling});
+
+    return (
+      <div className={shuffleButtonListClasses}>
+        <button className="btn btn-shuffle" onClick={this.props.shuffleColors} type="button" disabled={isShuffling}>Shuffle All</button>
+      </div>
+    );
   }
 
   renderShufflingMessage(){

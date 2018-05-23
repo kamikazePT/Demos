@@ -22,45 +22,50 @@ class ColorChooserPageContainer extends Component{
   _fetchColors = () => {
     this.setState({
       isFetching : true
-    }, () => setTimeout(() => {
-      this.setState({
-        isFetching : false,
-        colors : [
-          {
-            value : '#FF0000',
-            label : 'Red'
-          },
-          {
-            value : '#00FF00',
-            label : 'Green'
-          },
-          {
-            value : '#0000FF',
-            label : 'Blue'
-          },
-          {
-            value : '#FFFF00',
-            label : 'Yellow'
-          }
-        ]
-      });
-    }, ONE_SECOND));
+    }, () => 
+      setTimeout(() => {
+        this.setState({
+          isFetching : false,
+          colors : [
+            {
+              value : '#FF0000',
+              label : 'Red'
+            },
+            {
+              value : '#00FF00',
+              label : 'Green'
+            },
+            {
+              value : '#0000FF',
+              label : 'Blue'
+            },
+            {
+              value : '#FFFF00',
+              label : 'Yellow'
+            }
+          ]
+        });
+      }, ONE_SECOND)
+    );
   }
 
 
   _shuffleColors = () => {
-    if(this.isShuffling) return;
+    const { isShuffling, colors } = this.state;
+    if(isShuffling || colors.length === 0) return;
 
     this.setState({
       isShuffling : true,
       selectedColor : null
-    }, () => setTimeout(() => {
-      this.setState({
-        isShuffling : false,
-        colors : shuffle([...this.state.colors]),
-        selectedColor : this.state.colors[Math.floor(Math.random() * this.state.colors.length)].value
-      });
-    }, HALF_SECOND));
+    }, () => 
+      setTimeout(() => {
+        this.setState({
+          isShuffling : false,
+          colors : shuffle([...this.state.colors]),
+          selectedColor : this.state.colors[Math.floor(Math.random() * this.state.colors.length)].value
+        });
+      }, HALF_SECOND)
+    );
   }
 
   _doSelectColor = (color) => {
