@@ -2,4 +2,4 @@
 
 ## yarn/npm install
 ## yarn/npm build
-## open examples/index.htm l
+## open examples/index.html
