@@ -1,5 +1,5 @@
-Have yarn installed
+# Must Have yarn/npm installed #
 
-yarn install
-yarn build
-open examples/index.html
+## yarn/npm install##
+## yarn/npm build##
+## open examples/index.htm l##
