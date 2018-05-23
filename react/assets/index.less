@@ -5,6 +5,8 @@
 @shuffle-button-width : 200px;
 @shuffle-button-height : 80px;
 @margin-large: 20px;
+@shadow-highlight: 15px;
+@none : 0px;
 
 .row(){
   width: @full-width;
@@ -27,8 +29,15 @@
 
       .btn.btn-color{
         cursor: pointer;
+        border: 1px solid black;
         width : @color-button-width;
         height: @color-button-height;
+      }
+    }
+
+    .color-button-container.is-selected{
+      .btn.btn-color{
+        box-shadow: @none @none @shadow-highlight black;
       }
     }
   }
