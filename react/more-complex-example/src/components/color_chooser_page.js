@@ -58,7 +58,7 @@ class ColorChooserPage extends Component{
 
 ColorChooserPage.defaultProps = {
   colors : [],
-  isShuffling : false,
+  isShuffling : false
 };
 
 ColorChooserPage.propTypes = {
