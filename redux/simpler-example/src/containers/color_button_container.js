@@ -2,17 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ColorButton from '../components/color_button';
-import { getSelectedColor } from '../selectors/color_button_list_selectors';
+import { isSelected } from '../selectors/color_button_list_selectors';
 import buttonActions from '../actions/color_button_actions';
+import bindIndexToActionCreators from '../domain/bind_index_to_action_creators';
 
 class ColorButtonContainer extends Component{
-  doSelectColor = () => this.props.doSelectColor(this.props.color.value)
+
+  mapStateToProps = state => {
+    return {
+      isSelected : isSelected(state, this.props.index)
+    };
+  };
+
+  componentWillMount(){
+    this.component = connect(this.mapStateToProps, bindIndexToActionCreators(buttonActions, this.props.index))(ColorButton);
+  }
 
   render(){
-    const { color, selectedColor } = this.props;
+    const Component = this.component;
 
     return(
-      <ColorButton {...this.props} doSelectColor={this.doSelectColor} isSelected={color.value === selectedColor}/>
+      <Component {...this.props}/>
     );
   }
 }
@@ -21,14 +31,9 @@ ColorButtonContainer.propTypes = {
   color : PropTypes.shape({
     value: PropTypes.string.isRequired
   }).isRequired,
-  doSelectColor : PropTypes.func.isRequired,
-  selectedColor : PropTypes.string
+  index: PropTypes.number.isRequired
 };
 
-const mapStateToProps = state => {
-  return {
-    selectedColor : getSelectedColor(state)
-  };
-};
 
-export default connect(mapStateToProps, buttonActions)(ColorButtonContainer);
+
+export default ColorButtonContainer;

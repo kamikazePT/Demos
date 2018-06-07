@@ -1,7 +1,7 @@
 {
-  "name": "react-demo",
+  "name": "redux-demo",
   "version": "1.0.0",
-  "description": "React (Without Redux) Demo Project",
+  "description": "React (With Redux) Demo Project",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kamikazePT/Demos.git"

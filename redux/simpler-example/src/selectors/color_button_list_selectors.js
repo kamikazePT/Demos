@@ -11,5 +11,9 @@ export function hasColors(state){
 }
 
 export function getSelectedColor(state){
-  return state.buttonList.selectedColor;
+  return state.buttonList.colors.find(color => color.isSelected);
+}
+
+export function isSelected(state, idx){
+  return state.buttonList.colors[idx].isSelected;
 }

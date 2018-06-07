@@ -7,7 +7,7 @@ const cpuCount = os.cpus().length;
 
 module.exports = {
   entry: {
-    'react-demo': ['babel-polyfill', './src/index.js']
+    'redux-demo': ['babel-polyfill', './src/index.js']
   },
   stats : 'minimal',
   devtool : 'source-map',

@@ -49,7 +49,7 @@ class ColorChooserGroup extends Component{
 
   render(){
     const { selectedColor } = this.props;
-    const pageStyles = selectedColor ? { backgroundColor : selectedColor } : {};
+    const pageStyles = selectedColor ? { backgroundColor : selectedColor.value } : {};
 
     return(
       <div className="color-chooser-page-container">
@@ -63,7 +63,9 @@ class ColorChooserGroup extends Component{
 }
 
 ColorChooserGroup.propTypes = {
-  selectedColor : PropTypes.string,
+  selectedColor : PropTypes.shape({
+    value: PropTypes.string.isRequired
+  }),
   hasColors : PropTypes.bool.isRequired,
   isFetching : PropTypes.bool.isRequired,
   doFetchColors : PropTypes.func.isRequired,

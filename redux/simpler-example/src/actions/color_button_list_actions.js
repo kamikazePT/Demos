@@ -4,7 +4,8 @@ import * as TIME from '../domain/times';
 
 export default {
   doFetchColors,
-  doSetColors
+  doSetColors,
+  doSelectColor
 };
 
 function doFetchColors() {
@@ -45,5 +46,12 @@ function doSetColors(colors){
   return {
     type: actionTypes.DO_FETCH_COLORS_SUCCESS,
     payload: { colors }
+  };
+}
+
+function doSelectColor(index){
+  return {
+    type: actionTypes.DO_SELECT_COLOR,
+    payload: { index }
   };
 }

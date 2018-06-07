@@ -8,7 +8,7 @@ function ColorButtonList(props){
   return(
     <Fragment>
       {colors.map((color, i) => (
-        <ColorButton key={i} color={color}/>
+        <ColorButton key={i} color={color} index={i}/>
       ))}
     </Fragment>
   );

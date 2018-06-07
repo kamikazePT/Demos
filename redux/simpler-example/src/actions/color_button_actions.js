@@ -1,12 +1,11 @@
 import actionTypes from './types/color_button_action_types';
 
 export default {
-  doSelectColor
+  doToggleColor
 };
 
-function doSelectColor(color) {
+function doToggleColor() {
   return {
-    type: actionTypes.DO_SELECT_COLOR,
-    payload: { color } 
+    type: actionTypes.DO_TOGGLE_COLOR
   };
 }
