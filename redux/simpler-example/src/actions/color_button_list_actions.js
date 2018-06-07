@@ -39,7 +39,6 @@ function doFetchColors() {
       type: actionTypes.DO_FETCH_COLORS_START
     };
   }
-
 }
 
 function doSetColors(colors){

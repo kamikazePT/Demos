@@ -57,6 +57,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-array-reducer-helpers": "^1.0.0",
     "redux-create-reducer": "^1.1.2",
     "shuffle-array": "^1.0.1"
   }
