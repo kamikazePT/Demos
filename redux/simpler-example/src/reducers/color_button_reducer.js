@@ -5,8 +5,8 @@ export default function reducer(initialState = { isSelected : false }) {
   return createReducer(initialState, {
     [actionTypes.DO_TOGGLE_COLOR] : doToggleColorHandler
   });
-}
 
-function doToggleColorHandler(state) {
-  return { ...state, isSelected: !state.isSelected};
+  function doToggleColorHandler(state) {
+    return { ...state, isSelected: !state.isSelected};
+  }
 }

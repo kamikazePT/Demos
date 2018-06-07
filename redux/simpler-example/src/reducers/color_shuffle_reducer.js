@@ -6,12 +6,12 @@ export default function reducer(initialState = {isShuffling : false}) {
     [actionTypes.DO_SHUFFLE_COLORS_START] : doShuffleStartHandler,
     [actionTypes.DO_SHUFFLE_COLORS_SUCCESS] : doShuffleSuccessHandler
   });
-}
 
-function doShuffleStartHandler(state) {
-  return { ...state, isShuffling: true };
-}
-
-function doShuffleSuccessHandler(state) {
-  return { ...state, isShuffling: false };
+  function doShuffleStartHandler(state) {
+    return { ...state, isShuffling: true };
+  }
+  
+  function doShuffleSuccessHandler(state) {
+    return { ...state, isShuffling: false };
+  }
 }
