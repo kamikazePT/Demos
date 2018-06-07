@@ -4300,15 +4300,15 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-array-reducer-helpers@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/redux-array-reducer-helpers/-/redux-array-reducer-helpers-1.0.0.tgz#ad1396ea422d152cafae11d1393e8fe42ac6734f"
-  dependencies:
-    lodash "^4.17.10"
-
 redux-create-reducer@^1.1.1, redux-create-reducer@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/redux-create-reducer/-/redux-create-reducer-1.1.2.tgz#c8b3fec55b3b25f6bdf0188d4c28b13889197ac0"
+
+redux-reducer-array-helpers@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/redux-reducer-array-helpers/-/redux-reducer-array-helpers-1.0.1.tgz#a86a461a32a3b521a9cb799a38d80e07170f2de8"
+  dependencies:
+    lodash "^4.17.10"
 
 redux-thunk@^2.2.0:
   version "2.3.0"

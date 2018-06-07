@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ColorButton from '../components/color_button';
 import { isSelected } from '../selectors/color_button_list_selectors';
 import buttonActions from '../actions/color_button_actions';
-import { bindIndexToActionCreators } from 'redux-array-reducer-helpers';
+import { bindIndexToActionCreators } from 'redux-reducer-array-helpers';
 
 class ColorButtonContainer extends Component{
 
