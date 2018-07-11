@@ -6,7 +6,7 @@ import simpleCounterActionMessageReducer from './reducers/simple_counter_action_
 import actionCreators from './actions/simple_counter_actions';
 
 const store = createStore(combineReducers({
-  counter : simpleCounterDisplayReducer(),
+  counter : simpleCounterDisplayReducer({ value : 0 }),
   actions : simpleCounterActionMessageReducer()
 }), devToolsEnhancer());
 
@@ -47,8 +47,8 @@ process.stdin.on('keypress', function (chunk, key) {
       const state = store.getState();
   
       process.stdout.write(`
-        last action was decrement? ${state.actions.wasDecrement}\n
-        last action was increment? ${state.actions.wasIncrement}\n
+        last action was decrement? ${state.actions.wasDecremented}\n
+        last action was increment? ${state.actions.wasIncremented}\n
         current value: ${state.counter.value}
       `);
     } 
