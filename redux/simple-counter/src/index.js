@@ -12,19 +12,19 @@ const store = createStore(combineReducers({
 
 const commands = [
   {
-    test : (key) => key && key.plus,
+    test : (chunk) => chunk === '+',
     exec : () => store.dispatch(actionCreators.doIncrement())
   },
   {
-    test : (key) => key && key.minus,
+    test : (chunk) => chunk === '-',
     exec : () => store.dispatch(actionCreators.doDecrement())
   },
   {
-    test : (key) => key && key.ctrl + key.name === 'r',
+    test : (chunk, key) => key && key.ctrl && key.name === 'r',
     exec : () => store.dispatch(actionCreators.doSetDefault(0))
   },
   {
-    test : (key) => key && key.ctrl + key.name === 'c',
+    test : (chunk, key) => key && key.ctrl && key.name === 'c',
     exec : () => process.exit()
   }
 ];
@@ -41,13 +41,16 @@ process.stdin.resume();
 
 process.stdin.on('keypress', function (chunk, key) {
   commands.forEach(command => {
-    if(command.test(key)) command.exec();
-  });
-  const state = store.getState();
+    if(command.test(chunk, key)){
+      command.exec();
+
+      const state = store.getState();
   
-  process.stdout.write(`
-    last action was decrement? ${state.actions.wasDecrement}\n
-    last action was increment? ${state.actions.wasIncrement}\n
-    current value: ${state.counter.value}
-  `);
+      process.stdout.write(`
+        last action was decrement? ${state.actions.wasDecrement}\n
+        last action was increment? ${state.actions.wasIncrement}\n
+        current value: ${state.counter.value}
+      `);
+    } 
+  });
 });
