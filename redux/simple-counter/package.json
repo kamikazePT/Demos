@@ -1,0 +1,50 @@
+{
+  "name": "redux-demo",
+  "version": "1.0.0",
+  "description": "Redux Demo Project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamikazePT/Demos.git"
+  },
+  "main": "dist/redux-demo.js",
+  "author": "Afonso aka KamikazePT",
+  "license": "ISC",
+  "scripts": {
+    "start": "node ./dist/redux-demo.js",
+    "build": "node_modules\\.bin\\webpack --config webpack.config.js",
+    "build:watch": "node_modules\\.bin\\webpack --config webpack.config.js --watch"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.14.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "happypack": "^5.0.0",
+    "os": "^0.1.1",
+    "shelljs": "^0.7.8",
+    "source-map-loader": "^0.2.3",
+    "webpack": "^3.10.0",
+    "yarn": "^1.3.2"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "stage-0"
+    ]
+  },
+  "dependencies": {
+    "keypress": "^0.2.1",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5"
+  }
+}
