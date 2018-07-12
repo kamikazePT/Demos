@@ -30,6 +30,8 @@ const commands = [
 ];
 
 process.stdout.write(`
+  Simple Counter Redux Only Demo
+
   Press "+" to increment\n
   Press "-" to decrement\n
   Press "CTRL + R" to reset counter\n
