@@ -1,0 +1,45 @@
+{
+  "name": "crypto-currency",
+  "version": "1.0.0",
+  "description": "order book and rebalance demos",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamikazePT/Demos.git"
+  },
+  "homepage": "https://github.com/kamikazePT/Demos/crypto-currency",
+  "author": "Afonso Santos aka kamikazePT",
+  "license": "MIT",
+  "scripts": {
+    "lint": "node_modules\\.bin\\eslint . --ext .js",
+    "flow": "node_modules\\.bin\\flow",
+    "compile": "node node_modules\\babel-cli\\bin\\babel.js src --out-dir lib",
+    "compile:debug": "node node_modules\\babel-cli\\bin\\babel.js src --out-dir lib --source-maps",
+    "compile:watch": "node node_modules\\babel-cli\\bin\\babel.js src --out-dir lib --source-maps --watch",
+    "precommit": "yarn install && yarn flow && yarn lint && yarn test && yarn compile",
+    "test": "node_modules\\.bin\\jest",
+    "test:debug": "node --inspect-brk node_modules\\jest\\bin\\jest.js --runInBand",
+    "test:watch": "yarn test -- --watch",
+    "start": "node ./lib/index.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.4.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.12.0",
+    "flow-bin": "^0.74.0",
+    "husky": "^0.14.3",
+    "jest": "^23.1.0"
+  }
+}
