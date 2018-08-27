@@ -31,7 +31,9 @@
         "prefer-const" : "warn",
         "block-spacing" : ["warn", "always"],
         "rest-spread-spacing" : ["warn", "never"],
-        "camelcase" : "warn"
+        "camelcase" : "warn",
+        "flowtype/define-flow-type": 1,
+        "flowtype/use-flow-type": 1
     },
     "plugins": [
       "import",
