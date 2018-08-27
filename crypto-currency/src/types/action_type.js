@@ -1,6 +1,6 @@
 const ActionTypes = {
-  Buy,
-  Sell
+  Buy : 'Buy',
+  Sell : 'Sell'
 };
 
 export type ActionType = $Keys<typeof ActionTypes>;

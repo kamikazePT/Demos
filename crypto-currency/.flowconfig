@@ -2,6 +2,8 @@
 <PROJECT_ROOT>/node_modules/.*
 <PROJECT_ROOT>/.babelrc
 <PROJECT_ROOT>/jest.config.js
+<PROJECT_ROOT>/lib
+<PROJECT_ROOT>/dist
 [include]
 
 [libs]
